@@ -1,0 +1,36 @@
+/mnt/d/Sajens/Haskell/warhammer-helper/warhammer-helper.cabal:
+  hash: b026de3c02edaa751e062b7876cc698866f737f418e482cc91d8613ccac2992a
+  size: 888
+  modtime: 1602448509
+/mnt/d/Sajens/Haskell/warhammer-helper/src/Model/Statline.hs:
+  hash: 83f06f122d4bb3a256e77ab2e4960dc1c8c41aab9f01d6518a40b8a219cd3c5f
+  size: 880
+  modtime: 1602622235
+/mnt/d/Sajens/Haskell/warhammer-helper/src/Main.hs:
+  hash: 109c45ae3c0d66457fe5b0ad63de9c0021f10b00bdf710dc659d945d3e2e4d28
+  size: 68
+  modtime: 1602364338
+/mnt/d/Sajens/Haskell/warhammer-helper/src/Model/Entity.hs:
+  hash: aeae5d798861335e82b09008b7f1d4aaebdd49704510c09ec08ec3490a86cda2
+  size: 415
+  modtime: 1602622444
+/mnt/d/Sajens/Haskell/warhammer-helper/README.md:
+  hash: 58b487df3367bf9b690d6c27a17a33e30976ef12ef9c5a54abaf6f7fa1bcb12a
+  size: 19
+  modtime: 1599414734
+/mnt/d/Sajens/Haskell/warhammer-helper/src/Model/Item.hs:
+  hash: 31f7ef1a1c0f3af6ebd2837ef6faa4e22602c694f51c8e0c76d5ae9ecc4b7d46
+  size: 281
+  modtime: 1602446478
+/mnt/d/Sajens/Haskell/warhammer-helper/src/Printing.hs:
+  hash: 68dd445deed4a513a6b080d7cd0ac873ff5cbd8895e1fb343e5061e1b7242664
+  size: 920
+  modtime: 1602622686
+/mnt/d/Sajens/Haskell/warhammer-helper/src/Names.hs:
+  hash: de9c445ae6d448674f49c381dc5d6f1b1cdd75c74ed36d312ac8dbc0bf42a254
+  size: 34031
+  modtime: 1602361979
+/mnt/d/Sajens/Haskell/warhammer-helper/src/Model/Modifier.hs:
+  hash: ea0078d69c219e715ede35b1e8a12dc818da1b0f589f88c630fb7bcce1e07b4a
+  size: 532
+  modtime: 1602449486
