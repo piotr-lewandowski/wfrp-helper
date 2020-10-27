@@ -19,11 +19,13 @@ executable warhammer-helper
   default-language:     Haskell2010
   build-depends:        base >= 4.7 && < 5,
                         random == 1.1,
-                        lens-simple
+                        lens-simple,
+                        parsec >= 3.1.14
   other-modules:        Model.Entity, 
                         Model.Item, 
                         Model.Statline, 
                         Model.Modifier,
                         Data.People,
                         Names, 
+                        Dice,
                         Printing
