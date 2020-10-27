@@ -12,5 +12,5 @@ stack ghci
 
 Test suite uses Hspec, so it should be installed on your system
 ```
-cabal update && cabal install hspec
+stack update && stack install hspec
 ```
