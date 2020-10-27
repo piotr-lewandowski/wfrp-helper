@@ -1,11 +1,12 @@
 module Dice where
 
-import Text.ParserCombinators.Parsec
 import Text.Parsec 
 import Control.Monad
 
 data Dice = Dice Int deriving Show
 data ManyDice = ManyDice Int Dice deriving Show
+
+type Parser = Parsec String () 
 
 data Expression =
     Constant Int |
@@ -29,7 +30,7 @@ eval (Multiple md)  = roll md
 eval (Sum a b)      = (+) <$> (eval a) <*> (eval b)
 
 expression :: Parser Expression
-expression = choice [multiple, single, constant]
+expression = choice [plus, multiple, single, constant] <* many space <* eof
 
 constant :: Parser Expression
 constant = Constant <$> positiveInt
@@ -38,7 +39,7 @@ single :: Parser Expression
 single = Single <$> dice
 
 dice :: Parser Dice
-dice = do
+dice = try $ do
     oneOf "kKdD"
     i <- positiveInt 
     return $ Dice i
@@ -47,16 +48,22 @@ multiple :: Parser Expression
 multiple = Multiple <$> manyDice 
 
 manyDice :: Parser ManyDice
-manyDice = do
+manyDice = try $ do
     n <- positiveInt
     d <- dice
     return $ ManyDice n d
 
 plus :: Parser Expression
-plus = undefined
+plus = try $ do
+    a <- choice [multiple, single, constant]
+    many space
+    char '+'
+    many space
+    b <- choice [plus, multiple, single, constant]
+    return $ Sum a b
 
 positiveInt :: (Integral a, Read a) => Parser a
-positiveInt = do
+positiveInt = try $ do
     x <- oneOf "123456789"
     xs <- many digit
     return $ read (x:xs)
