@@ -3,6 +3,7 @@ module Test.DiceSpec (spec) where
 import Dice
 import Test.Hspec
 import Text.Parsec
+import Control.Applicative
 
 spec :: Spec
 spec = parallel $  do
@@ -36,3 +37,15 @@ spec = parallel $  do
                 parse expression "" "1 + 7 + 3 + 4" `shouldBe` (Right $ Sum (Constant 1) (Sum (Constant 7) (Sum (Constant 3) (Constant 4))))
             it "mixed expressions" $
                 parse expression "" "1 + 7d10" `shouldBe` (Right $ Sum (Constant 1) (Multiple $ ManyDice 7 $ Dice 10))
+    
+    describe "eval evaluates values in correct ranges" $ do
+        it "evaluates constants" $
+            eval (Constant 1) `shouldReturn` 1
+        it "evaluates single dice" $ do
+            res <- eval (Single $ Dice 6)
+            res `shouldSatisfy` (liftA2 (&&) (>=1) (<=6))
+        it "evaluates multiple dice" $ do
+            res <- eval (Multiple $ ManyDice 2 $ Dice 4) 
+            res `shouldSatisfy` (liftA2 (&&) (>=2) (<=8))
+        it "evaluates sums" $
+            eval (Sum (Constant 1) (Constant 7)) `shouldReturn` 8

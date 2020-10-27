@@ -2,6 +2,7 @@ module Dice where
 
 import Text.Parsec 
 import Control.Monad
+import System.Random
 
 data Dice = Dice Int deriving (Show, Eq)
 data ManyDice = ManyDice Int Dice deriving (Show, Eq)
@@ -18,7 +19,7 @@ class Roll a where
     roll :: a -> IO Int
 
 instance Roll Dice where
-    roll (Dice d) = undefined
+    roll (Dice d) = getStdRandom (randomR (1,d))
 
 instance Roll ManyDice where
     roll (ManyDice n d) = sum <$> (replicateM n $ roll d)
