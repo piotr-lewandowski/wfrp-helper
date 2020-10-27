@@ -13,17 +13,44 @@ build-type:          Simple
 cabal-version:       >=1.10
 extra-source-files:  README.md
 
-executable warhammer-helper
-  hs-source-dirs:       src
-  main-is:              Main.hs
-  default-language:     Haskell2010
-  build-depends:        base >= 4.7 && < 5,
-                        random == 1.1,
-                        lens-simple
-  other-modules:        Model.Entity, 
+library
+  hs-source-dirs:       lib
+  exposed-modules:      Model.Entity, 
                         Model.Item, 
                         Model.Statline, 
                         Model.Modifier,
                         Data.People,
-                        Names, 
+                        Data.Names, 
+                        Dice,
                         Printing
+  default-language:     Haskell2010
+  ghc-options:          -Wall
+  build-depends:        base >= 4.7 && < 5,
+                        random == 1.1,
+                        lens-simple,
+                        parsec >= 3.1.14
+
+executable warhammer-helper
+  hs-source-dirs:       src
+  main-is:              Main.hs
+  ghc-options:          -Wall
+  default-language:     Haskell2010
+  build-depends:        base >= 4.7 && < 5,
+                        random == 1.1,
+                        lens-simple,
+                        parsec >= 3.1.14,
+                        warhammer-helper
+
+test-suite warhammer-helper-test
+  type:                 exitcode-stdio-1.0
+  hs-source-dirs:       test
+  main-is:              Spec.hs
+  other-modules:        Test.DiceSpec
+  ghc-options:          -Wall
+  default-language:     Haskell2010
+  build-depends:        base >= 4.7 && < 5,
+                        random == 1.1,
+                        lens-simple,
+                        parsec >= 3.1.14,
+                        hspec,
+                        warhammer-helper

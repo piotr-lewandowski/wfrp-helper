@@ -11,7 +11,7 @@ printStats (Statline a b c d e f g h i j) = "| " ++ go [a,b,c,d,e,f,g,h,i,j]
         go (x:y:xs) = printf "%3d" x ++ " | " ++ go (y:xs)
 
 printEntity :: Entity -> String
-printEntity e@(Entity name stats _ _) = "| " ++ printf nameFormat name ++ " " ++ printStats stats ++ " " ++ printWounds e ++ " |"
+printEntity e@(Entity n s _ _) = "| " ++ printf nameFormat n ++ " " ++ printStats s ++ " " ++ printWounds e ++ " |"
 
 printWounds :: Entity -> String
 printWounds (Entity _ stats woundsAlg _) = printf "%5d" $ woundsAlg stats
