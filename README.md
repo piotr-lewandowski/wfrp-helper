@@ -9,3 +9,8 @@ You can build and run the application from source code using [haskell stack](htt
 ```
 stack ghci
 ```
+
+Test suite uses Hspec, so it should be installed on your system
+```
+cabal update && cabal install hspec
+```
