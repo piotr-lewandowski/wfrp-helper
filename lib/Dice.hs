@@ -31,7 +31,7 @@ eval (Multiple md)  = roll md
 eval (Sum a b)      = (+) <$> (eval a) <*> (eval b)
 
 expression :: Parser Expression
-expression = choice [plus, multiple, single, constant] <* many space <* eof
+expression = choice [plus, multiple, single, constant]
 
 constant :: Parser Expression
 constant = Constant <$> positiveInt
