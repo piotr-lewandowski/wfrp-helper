@@ -9,10 +9,10 @@ You can build and run the application from source code using [haskell stack](htt
 ```
 # stack ghci
 
-> (eval $ fromRight (Constant 0) $ parse expression "" "1d10 + 7") >>= print
+> eval (fromRight (Constant 0) $ parse expression "" "1d10 + 7") >>= print
 9
 
-> randomStats >>= return . ($ (archer $ human)) >>= print
+> (($ archer human) <$> randomStats) >>= print
 Entity "Human Archer" Statline { (...) } 9 []
 
 > putStrLn $ printTable [human, elf, dwarf, humanArcher]
