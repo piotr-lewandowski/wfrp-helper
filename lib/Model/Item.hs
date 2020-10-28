@@ -10,5 +10,6 @@ data Item =
     } 
     | Armor { name :: String, protection :: Int }
     | Other { name :: String, description :: String }
+    deriving Show
 
 type Equipment = [Item]
