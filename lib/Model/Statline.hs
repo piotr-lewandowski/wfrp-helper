@@ -15,12 +15,13 @@ data Statline = Statline
         _inteligence :: Int,
         _willpower :: Int,
         _fellowship :: Int
-    }
+    } deriving Show
 
 $(makeLenses ''Statline)
 
-fromList :: [Int] -> Statline
-fromList [a,b,c,d,e,f,g,h,i,j] = Statline a b c d e f g h i j
+fromList :: [Int] -> Maybe Statline
+fromList [a,b,c,d,e,f,g,h,i,j] = Just $ Statline a b c d e f g h i j
+fromList _ = Nothing
 
 toList :: Statline -> [Int]
 toList (Statline a b c d e f g h i j) = [a,b,c,d,e,f,g,h,i,j]
