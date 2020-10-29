@@ -1,6 +1,6 @@
 module Test.DiceSpec (spec) where
 
-import Dice
+import Language.Dice
 import Test.Hspec
 import Text.Parsec
 import Control.Applicative

@@ -15,13 +15,16 @@ extra-source-files:  README.md
 
 library
   hs-source-dirs:       lib
-  exposed-modules:      Model.Entity, 
+  exposed-modules:      Model.Entity,
+                        Model.Dice, 
                         Model.Item, 
                         Model.Statline, 
                         Model.Modifier,
                         Data.People,
                         Data.Names, 
-                        Dice,
+                        Language.Dice,
+                        Language.Entity,
+                        Language.Main,
                         Printing
   default-language:     Haskell2010
   ghc-options:          -Wall
