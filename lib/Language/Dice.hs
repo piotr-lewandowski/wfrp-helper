@@ -1,6 +1,5 @@
 module Language.Dice where
 
-import Text.Parsec 
 import Language.Main
 import Model.Dice
 
