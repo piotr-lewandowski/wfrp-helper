@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        stack: ["2.3.1"]
-        ghc: ["8.8.3"]
+        stack: ["2.5.1"]
+        ghc: ["8.10.2"]
 
     steps:
     - uses: actions/checkout@v2
@@ -20,6 +20,7 @@ jobs:
       name: Setup Haskell Stack
       with:
         ghc-version: ${{ matrix.ghc }}
+        enable-stack: true
         stack-version: ${{ matrix.stack }}
 
     - uses: actions/cache@v1
