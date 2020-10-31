@@ -8,14 +8,14 @@ Currently supported features:
 You can build and run the application from source code using [haskell stack](https://docs.haskellstack.org/en/stable/install_and_upgrade/). For example
 ```
 # stack ghci
-
-> eval (fromRight (Constant 0) $ parse expression "" "1d10 + 7") >>= print
+> import Data.Either
+> eval (fromRight (Constant 0) $ parse diceExpression "" "1d10 + 7") >>= print
 9
 
 > (($ archer human) <$> randomStats) >>= print
 Entity "Human Archer" Statline { (...) } 9 []
 
-> putStrLn $ printTable [human, elf, dwarf, humanArcher]
+> putStrLn $ printTable [human, elf, dwarf, archer human]
 | Name            | WS  | BS  | S   | T   | I   | Ag  | Dex | Int | WP  | Fel | W     |
 ---------------------------------------------------------------------------------------
 | Human           |  30 |  30 |  30 |  30 |  30 |  30 |  30 |  30 |  30 |  30 |    12 |
