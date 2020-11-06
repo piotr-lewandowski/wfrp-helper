@@ -4,8 +4,11 @@ Haskell app providing the DM with some useful tools.
 Currently supported features:
 - Creating basic character archetypes modified with random stat rolls
 - Pretty printing statlines
+- Rolling dice
 
-You can build and run the application from source code using [haskell stack](https://docs.haskellstack.org/en/stable/install_and_upgrade/). For example
+You can build and run the application from source code using [haskell stack](https://docs.haskellstack.org/en/stable/install_and_upgrade/).
+
+## Examples
 ```
 # stack ghci
 > import Data.Either
@@ -24,6 +27,7 @@ Entity "Human Archer" Statline { (...) } 9 []
 | Human Archer    |  25 |  47 |  37 |  22 |  26 |  49 |  43 |  28 |  30 |  28 |    10 |
 ```
 
+## Running tests
 Test suite uses Hspec, so it should be installed on your system
 ```
 stack update && stack install hspec
