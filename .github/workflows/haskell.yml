@@ -1,7 +1,14 @@
 name: Haskell CI
 
-# Trigger the workflow on push or pull request, but only for the master branch
-on: [push, pull_request]
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   stack:
@@ -14,7 +21,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      if: github.event.action == 'opened' || github.event.action == 'synchronize' || github.event.ref == 'refs/heads/master'
 
     - uses: actions/setup-haskell@v1.1
       name: Setup Haskell Stack
@@ -31,7 +37,6 @@ jobs:
 
     - name: Build
       run: |
-        ls -la
         stack build --system-ghc --test --bench --no-run-tests --no-run-benchmarks
     - name: Test
       run: |
