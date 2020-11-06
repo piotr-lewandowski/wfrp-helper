@@ -37,7 +37,7 @@ singleEntity :: Parser EntityExpression -> Parser EntityExpression -> Parser Ent
 singleEntity m n = try $ do
     modExpsPre <- m `endBy` spaces
     (NameExpression ent) <- n
-    _ <- space
+    _ <- spaces
     modExpsPost <- m `endBy` spaces
     let mods = map (\(ModifierExpression x _) -> x) $ modExpsPre ++ modExpsPost
     return $ NameExpression $ foldr ($) ent mods
