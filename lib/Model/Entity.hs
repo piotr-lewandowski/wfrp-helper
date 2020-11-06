@@ -1,16 +1,19 @@
+{-# LANGUAGE TemplateHaskell #-}
 module Model.Entity where
 
 import Model.Item
 import Model.Statline
-
+import Lens.Simple
 
 data Entity = Entity
     {
-        name :: String,
-        statline :: Statline,
-        wounds :: Statline -> Int,
-        equipment :: Equipment
+        _name :: String,
+        _statline :: Statline,
+        _wounds :: Statline -> Int,
+        _equipment :: Equipment
     }
+
+$(makeLenses ''Entity)
 
 instance Show Entity where
     show (Entity n s w e) = "Entity " ++ show n ++ " " ++ show s ++ " " ++ show (w s) ++ " " ++ show e

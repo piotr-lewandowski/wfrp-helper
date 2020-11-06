@@ -15,7 +15,7 @@ data Statline = Statline
         _inteligence :: Int,
         _willpower :: Int,
         _fellowship :: Int
-    } deriving Show
+    } deriving (Show, Eq)
 
 $(makeLenses ''Statline)
 

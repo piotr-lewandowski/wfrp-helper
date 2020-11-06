@@ -12,8 +12,8 @@ randomStats :: IO Modifier
 randomStats = do
     rolls <- replicateM 10 $ getStdRandom (randomR (2,20))
     let randomModifiers = map (subtract 10) rolls
-        modifier e = e { statline = newStats }
-            where (Just newStats) = fromList $ zipWith (+) randomModifiers $ toList $ statline e
+        modifier e = e & statline .~ newStats
+            where (Just newStats) = fromList $ zipWith (+) randomModifiers $ toList $ e^.statline
     return modifier
 
 warrior :: Modifier
