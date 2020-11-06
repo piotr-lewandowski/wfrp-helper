@@ -31,6 +31,7 @@ jobs:
 
     - name: Build
       run: |
+        ls -la
         stack build --system-ghc --test --bench --no-run-tests --no-run-benchmarks
     - name: Test
       run: |
