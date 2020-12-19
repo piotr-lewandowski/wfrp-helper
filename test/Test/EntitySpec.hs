@@ -71,3 +71,10 @@ modParser = choice $ map modifierExpression modifiers
 
 nameParser :: Parser EntityExpression
 nameParser = choice $ map nameExpression entities
+
+-- Show instance to satisfy Hspec requirements
+instance Show EntityExpression where
+    show (NameExpression e) = e^.name
+    show (ModifierExpression _ _) = "Modifier"
+    show (AndExpression a b) = "And (" ++ show a ++ " " ++ show b ++ ")"
+    show (QuantityExpression d e) = "Quantity (" ++ show d ++ " " ++ show e ++ ")"
