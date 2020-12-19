@@ -13,8 +13,8 @@ newtype QuitExpression = QuitExpression String
 topLevelP :: Parser TopLevelExpression
 topLevelP = choice [ 
     TlQuit . QuitExpression <$> quitString
-    , TlDice <$> diceExpression
     , TlEntity <$> entityExpression 
+    , TlDice <$> diceExpression
     ]
 
 parseTopLvl :: String -> Either ParseError TopLevelExpression

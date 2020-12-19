@@ -3,7 +3,9 @@ module Main where
 import Language.Main
 import Language.Repl
 import Language.Dice
+import Language.Entity
 import System.IO
+import Printing
 
 main :: IO ()
 main = parseLine
@@ -22,7 +24,7 @@ showResult res = case res of
   Right topLvl -> case topLvl of
     TlQuit _ -> return Nothing
     TlDice d -> Just . show <$> eval d
-    TlEntity e -> return $ Just $ show e
+    TlEntity e -> Just . printTable <$> evalEntity e
 
 printOrQuit :: Maybe String -> IO ()
 printOrQuit (Just s) = putStrLn s >> parseLine

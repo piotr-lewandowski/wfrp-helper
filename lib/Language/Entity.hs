@@ -4,7 +4,6 @@ import Language.Dice
 import Language.Main
 import Model.Entity
 import Model.Modifier
-import Lens.Simple
 
 data EntityExpression = 
     NameExpression Entity |
@@ -12,11 +11,14 @@ data EntityExpression =
     AndExpression EntityExpression EntityExpression |
     QuantityExpression DiceExpression EntityExpression
 
-instance Show EntityExpression where
-    show (NameExpression e) = e^.name
-    show (ModifierExpression _ _) = "Modifier"
-    show (AndExpression a b) = "And (" ++ show a ++ " " ++ show b ++ ")"
-    show (QuantityExpression d e) = "Quantity (" ++ show d ++ " " ++ show e ++ ")"
+evalEntity :: EntityExpression -> IO [Entity]
+evalEntity (NameExpression e) = return [e]
+evalEntity (ModifierExpression _ _) = return []
+evalEntity (AndExpression e f) = (++) <$> evalEntity e <*> evalEntity f
+evalEntity (QuantityExpression d expr) = do
+    n <- eval d
+    es <- evalEntity expr
+    return $ concat $ replicate n es
 
 modifiers :: [(String, Modifier)]
 modifiers = [("warrior", warrior), ("archer", archer), ("captain", captain)]
