@@ -1,7 +1,11 @@
+{-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE TemplateHaskell #-}
 module Model.Statline where
 
 import Lens.Simple
+import GHC.Generics
+import Data.Aeson
+import Model.Main
 
 data Statline = Statline 
     {
@@ -15,7 +19,14 @@ data Statline = Statline
         _inteligence :: Int,
         _willpower :: Int,
         _fellowship :: Int
-    } deriving (Show, Eq)
+    } deriving (Eq, Generic, Show)
+
+instance ToJSON Statline where
+    toJSON     = genericToJSON customOptions
+    toEncoding = genericToEncoding customOptions
+
+instance FromJSON Statline where
+    parseJSON = genericParseJSON customOptions
 
 $(makeLenses ''Statline)
 

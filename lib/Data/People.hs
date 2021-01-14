@@ -4,7 +4,7 @@ import Model.Statline
 import Model.Entity
 
 albrechtAnderssen :: Entity
-albrechtAnderssen = Entity "Albrecht" stats humanWounds []
+albrechtAnderssen = Entity "Albrecht" stats (humanWounds stats) []
     where
         stats = Statline
             {
