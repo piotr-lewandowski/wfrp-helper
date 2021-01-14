@@ -18,13 +18,13 @@ You can build and run the application from source code using [haskell stack](htt
 > (($ archer human) <$> randomStats) >>= print
 Entity "Human Archer" Statline { (...) } 9 []
 
-> putStrLn $ printTable [human, elf, dwarf, archer human]
+> putStrLn $ printTable [human, elf, warrior dwarf, archer human]
 | Name            | WS  | BS  | S   | T   | I   | Ag  | Dex | Int | WP  | Fel | W     |
 ---------------------------------------------------------------------------------------
 | Human           |  30 |  30 |  30 |  30 |  30 |  30 |  30 |  30 |  30 |  30 |    12 |
 | Elf             |  40 |  40 |  30 |  30 |  50 |  40 |  40 |  40 |  40 |  30 |    13 |
-| Dwarf           |  40 |  30 |  30 |  40 |  30 |  20 |  40 |  30 |  50 |  20 |    16 |
-| Human Archer    |  25 |  47 |  37 |  22 |  26 |  49 |  43 |  28 |  30 |  28 |    10 |
+| Dwarf Warrior   |  50 |  30 |  40 |  50 |  30 |  20 |  40 |  30 |  50 |  20 |    16 |
+| Human Archer    |  30 |  40 |  30 |  30 |  30 |  40 |  40 |  30 |  30 |  30 |    12 |
 ```
 
 ## Running tests

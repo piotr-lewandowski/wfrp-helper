@@ -15,7 +15,7 @@ printEntity :: Entity -> String
 printEntity e@(Entity n s _ _) = "| " ++ printf nameFormat n ++ " " ++ printStats s ++ " " ++ printWounds e ++ " |"
 
 printWounds :: Entity -> String
-printWounds (Entity _ stats woundsAlg _) = printf "%5d" $ woundsAlg stats
+printWounds (Entity _ _ w _) = printf "%5d" w
 
 nameFormat :: String
 nameFormat = "%-15.15s"

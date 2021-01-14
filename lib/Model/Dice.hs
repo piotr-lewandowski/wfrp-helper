@@ -1,10 +1,10 @@
 module Model.Dice where
 
 import System.Random
-import Control.Monad 
+import Control.Monad
 
-newtype Dice = Dice Int deriving (Show, Eq)
-data ManyDice = ManyDice Int Dice deriving (Show, Eq)
+newtype Dice = Dice Int deriving (Eq, Show)
+data ManyDice = ManyDice Int Dice deriving (Eq, Show)
 
 class Roll a where
     roll :: a -> IO Int
