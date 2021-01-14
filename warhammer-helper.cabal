@@ -51,8 +51,9 @@ test-suite warhammer-helper-test
   type:                 exitcode-stdio-1.0
   hs-source-dirs:       test
   main-is:              Spec.hs
-  other-modules:        Test.DiceSpec
-                        Test.EntitySpec
+  other-modules:        Test.DiceSpec,
+                        Test.EntitySpec,
+                        Test.ReadmeSpec
   ghc-options:          -Wall
   default-language:     Haskell2010
   build-depends:        base >= 4.7 && < 5,
